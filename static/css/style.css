@@ -1,3 +1,41 @@
-#test_code {
-    margin-top: 200px;
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,600,700');
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #f2f2f2;
+}
+
+/*----------------------------------------- Base - Jumbotron */
+
+.bg-light {
+    background-color: #ADD8E6!important;
+}
+
+.navbar a {
+    color: #f2f2f2!important;
+}
+
+.jumbotron {
+    background-image: url('../images/jumbotron-desktop.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 90px;
+    height: 400px!important;
+    opacity: 0.8;
+    border-radius: 12px;
+}
+
+.jumbp-text {
+    margin: 70px 0px;
+    color: #f2f2f2;
+    letter-spacing: 2px;
+}
+
+
+
+/*----------------------------------------- Media Queries */
+@media (min-width: 768px) {
+    .jumbortron {
+        height: 400px;
+    }
 }
