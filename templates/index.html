@@ -1,5 +1,11 @@
 {% extends 'base.html' %} 
 
 {% block content %}
-<p id="test_code"> INDEX CODE </p>
+    {% for recipe in recipes %}
+        <p>{{ recipe.recipe_name }}</p>
+        <p>{{ recipe.course }}</p>
+        <p>{{ recipe.ingredients }}</p>
+        <p>{{ recipe.method }}</p>
+        <hr>
+    {% endfor %}
 {% endblock %}
