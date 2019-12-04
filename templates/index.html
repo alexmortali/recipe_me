@@ -1,11 +1,59 @@
 {% extends 'base.html' %} 
 
 {% block content %}
+<section class="recipes-list">
+    {% for recipe in recipes %}
+    <div class="recipe-card">
+        <div class="row">
+            <div class="col-4">
+                <img src="{{ recipe.picture }}" height="250px" width="250px">
+            </div>
+            <div class="col-8">
+                <!-- Top Row -->
+                <div class="row">
+                    <div class="col-4">
+                        <p>{{ recipe.recipe_name }}</p>
+                    </div>
+                    <div class="col-4">
+                        <p>{{ recipe.course_name }}</p>
+                    </div>
+                    <div class="col-4">
+                        <p>{{ recipe.cuisine_name }}</p>
+                    </div>
+                </div>
+                <!-- Middle Row -->
+                <div class="row">
+                    <div class="col-12">
+                        <p>{{ recipe.description }}</p>
+                    </div>
+                </div>
+                <!-- Bottom Row -->
+                <div class="row">
+                    <div class="col-4">
+                        <p>{{ recipe.total_time }}</p>
+                    </div>
+                    <div class="col-4">
+                        <p>{{ recipe.serves_num }}</p>
+                    </div>
+                    <div class="col-4">
+                        <button><a>View Recipe</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+
+<!--
     {% for recipe in recipes %}
         <p>{{ recipe.recipe_name }}</p>
         <p>{{ recipe.course }}</p>
         <p>{{ recipe.ingredients }}</p>
         <p>{{ recipe.method }}</p>
+        <img src="{{ recipe.picture }}">
         <hr>
     {% endfor %}
+-->
 {% endblock %}

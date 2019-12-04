@@ -25,17 +25,22 @@ body {
     border-radius: 12px;
 }
 
-.jumbp-text {
+.jumbo-text {
     margin: 70px 0px;
     color: #f2f2f2;
-    letter-spacing: 2px;
+}
+
+.jumbo-text p {
+    letter-spacing: 2.5px;
+    line-height: 30px;
 }
 
 
 
-/*----------------------------------------- Media Queries */
-@media (min-width: 768px) {
-    .jumbortron {
-        height: 400px;
-    }
+/*----------------------------------------- Recipe Card */
+
+.recipe-card {
+    border: 1px black solid;
+    margin-bottom: 25px;
+    border-radius: 5px;
 }
