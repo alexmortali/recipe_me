@@ -12,8 +12,8 @@ app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 mongo = PyMongo(app)
 
 @app.route('/')
-@app.route('/get_recipes')
-def get_recipes():
+@app.route('/home')
+def home():
     ''' function to display the landing page with all recipes '''
     
     return render_template('index.html')
@@ -23,7 +23,7 @@ def get_recipes():
 def about():
     ''' function to display the about page '''
     
-    return render_template('about.html')
+    return render_template('about.html', title="About")
     
 
 @app.route('/sign_up')
@@ -31,7 +31,7 @@ def sign_up():
     ''' function to display the sign up page with a form for 
         users to create an account '''
     
-    return render_template('sign_up.html')
+    return render_template('sign_up.html', title="Sign Up")
 
 
 @app.route('/login')
@@ -39,7 +39,7 @@ def login():
     ''' function to display the login page with a form for 
         users to enter their details '''
     
-    return render_template('login.html')
+    return render_template('login.html', title="Login")
 
 
 if __name__ == '__main__':
