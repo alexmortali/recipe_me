@@ -7,6 +7,11 @@ body {
 
 /*----------------------------------------- Base - Jumbotron */
 
+#jumbotron-container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 .bg-light {
     background-color: #ADD8E6!important;
 }
@@ -43,4 +48,91 @@ body {
     border: 1px black solid;
     margin-bottom: 25px;
     border-radius: 5px;
+    height: 300px;
+}
+
+#recipe-card-image-area {
+    padding-left: 0px;
+}
+
+#recipe-card-image {
+    border-radius: 5px;
+    height: 298px;
+    width: 300px;
+}
+
+.recipe-card-row {
+    height: 100px;
+}
+
+#recipe-card-top-row {
+    margin-top: 25px;
+}
+
+#recipe-card-text-area {
+    padding-right: 0px;
+    padding-left: 60px;
+    font-size: 115%;
+}
+
+hr {
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+    margin-right: 40px;
+    background-color: #ADD8E6;
+}
+
+/*----------------------------------------- Media Queries */
+
+@media (max-width: 768px) {
+    .recipe-card {
+        height: 200px;
+    }
+
+    .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    
+    #recipe-card-image {
+        border-radius: 5px;
+        height: 198px;
+        width: 150px;
+    }
+
+    #recipe-card-top-row {
+        margin-top: 10px;
+    }
+
+    #recipe-title {
+        clear: both;
+        white-space: nowrap;
+        display: inline-block;
+    }
+
+    #recipe-card-text-area {
+        font-size: 100%;
+    }
+
+    i {
+        font-size: 80%;
+    }
+
+    hr {
+        margin-left: 15px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    .top-line {
+        margin-top: -63px;
+    }
+
+    .bottom-line {
+        margin-top: -10px;
+    }
+    
+    .view-recipe-button {
+        margin-left: -10px;
+    }
 }
