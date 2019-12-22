@@ -53,6 +53,17 @@
                     </section>
                 </div>
             </div>
+            <!-- Any flash messages will be at the top of page content -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <!-- loop through to display meassages-->
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
             
             {% block content %} {% endblock %}
         </div>
