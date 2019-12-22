@@ -7,11 +7,6 @@ body {
 
 /*----------------------------------------- Base - Jumbotron */
 
-#jumbotron-container {
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
 .bg-light {
     background-color: #ADD8E6!important;
 }
@@ -73,6 +68,10 @@ body {
     padding-right: 0px;
     padding-left: 60px;
     font-size: 115%;
+}
+
+.view-recipe-button {
+    white-space: nowrap;
 }
 
 hr {
