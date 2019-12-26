@@ -67,6 +67,12 @@ def login():
             flash('Login failed. Please check username and password', 'danger')
     return render_template('login.html', title="Login", form=form)
 
+@app.route('/logout')
+def logout():
+    '''function that allows a user to logout'''
+
+    session.clear()
+    return redirect(url_for('home'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
