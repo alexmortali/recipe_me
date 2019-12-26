@@ -82,9 +82,9 @@ hr {
 }
 
 
-/*----------------------------------------- Sign Up */
+/*----------------------------------------- Form Container */
 
-.sign-up-container {
+.form-container {
     border: 1px solid black;
     border-radius: 12px;
     padding-top: 20px;
