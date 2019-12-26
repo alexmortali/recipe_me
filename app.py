@@ -47,7 +47,7 @@ def sign_up():
             session['logged'] = True
             return redirect(url_for('home'))
         else:
-            flash('{form.username.data} already exists!', 'alert')
+            flash(f'Username {form.username.data} already exists! Please choose a different username', 'danger')
             return redirect(url_for('sign_up'))
         
     return render_template('sign_up.html', title="Sign Up", form=form)
