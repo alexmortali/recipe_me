@@ -1,8 +1,10 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, flash
+from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from forms import SignupForm, LoginForm
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 app = Flask(__name__)
 
@@ -34,17 +36,35 @@ def sign_up():
         
     form = SignupForm()
     if form.validate_on_submit():
-        flash(f'Account created for {form.username.data}!', 'success')
-        return redirect(url_for('home'))
+        users = mongo.db.users
+        existing_user = users.find_one({'username' : request.form['username']})
+
+        if existing_user is None:
+            hash_password = generate_password_hash(request.form['password'])
+            users.insert_one({'username': request.form['username'], 'password': hash_password})
+            flash(f'Account created for {form.username.data}!', 'success')
+            session['username'] = request.form['username']
+            session['logged'] = True
+            return redirect(url_for('home'))
+        else:
+            flash('{form.username.data} already exists!', 'alert')
+            return redirect(url_for('sign_up'))
+        
     return render_template('sign_up.html', title="Sign Up", form=form)
 
 
-@app.route('/login')
+@app.route('/login', methods=["GET", "POST"])
 def login():
     ''' function to display the login page with a form for 
         users to enter their details '''
     
     form = LoginForm()
+    if form.validate_on_submit():
+        if form.username.data == 'XX' and form.password.data == 'YY':
+            flash(f'Hi {form.username.data}, welcome to Recipe Me!', 'success' )
+            return redirect(url_for('home'))
+        else:
+            flash('Login failed. Please check username and password', 'danger')
     return render_template('login.html', title="Login", form=form)
 
 
