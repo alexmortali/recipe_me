@@ -60,11 +60,22 @@ def login():
     
     form = LoginForm()
     if form.validate_on_submit():
-        if form.username.data == 'XX' and form.password.data == 'YY':
-            flash(f'Hi {form.username.data}, welcome to Recipe Me!', 'success' )
-            return redirect(url_for('home'))
+        users = mongo.db.users
+        get_user = users.find_one({'username': request.form['username']})
+        if get_user:
+            password = form.password.data
+            if check_password_hash(get_user['password'], password):
+                flash(f'You  are logged in as {form.username.data}', 'success')
+                session['username'] = request.form['username']
+                session['logged'] = True
+                return redirect(url_for('home'))
+            else:
+                flash('Incorrect password please try again!', 'danger')
+                return redirect(url_for('login'))
         else:
-            flash('Login failed. Please check username and password', 'danger')
+            flash(f'Username \'{form.username.data}\' does not exist', 'danger')
+            return redirect(url_for('login'))
+            
     return render_template('login.html', title="Login", form=form)
 
 @app.route('/logout')
