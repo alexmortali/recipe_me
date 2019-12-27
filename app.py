@@ -32,21 +32,29 @@ def about():
 @app.route('/sign_up', methods=["GET", "POST"])
 def sign_up():
     ''' function to display the sign up page with a form for 
-        users to create an account '''
+        users to create an account. Firstly it checks that the form 
+        has been filled in correctly. Then if there is no existing user, it 
+        creates an account and notifies the users they are now logged in on that account.
+        If the username already exists it gives them a message to try another name.'''
         
     form = SignupForm()
+    # Checking form has been filled in correctly
     if form.validate_on_submit():
         users = mongo.db.users
         existing_user = users.find_one({'username' : request.form['username']})
-
+        
+        # If username isn't already in database
         if existing_user is None:
             hash_password = generate_password_hash(request.form['password'])
+            # Create an account
             users.insert_one({'username': request.form['username'], 'password': hash_password})
+            # Notify them
             flash(f'Account created for \'{form.username.data}\'!', 'success')
             session['username'] = request.form['username']
             session['logged'] = True
             return redirect(url_for('home'))
         else:
+            # If username already exists then tell user to try another username
             flash(f'Username \'{form.username.data}\' already exists! Please choose a different username', 'danger')
             return redirect(url_for('sign_up'))
         
@@ -56,12 +64,18 @@ def sign_up():
 @app.route('/login', methods=["GET", "POST"])
 def login():
     ''' function to display the login page with a form for 
-        users to enter their details '''
+        users to enter their details. Firstly it checks that the form 
+        has been filled in correctly. Then it checks that the username exists. 
+        If it doesn't it notifies the user. If it does it checks the passwords match 
+        and if they do logs the user in. 
+        If they don't it notifies them of an incorrect password '''
     
     form = LoginForm()
+    # Checking form has been filled in correctly
     if form.validate_on_submit():
         users = mongo.db.users
         get_user = users.find_one({'username': request.form['username']})
+        # If the username exists, check passwords match and sign them in if they do
         if get_user:
             password = form.password.data
             if check_password_hash(get_user['password'], password):
@@ -70,9 +84,11 @@ def login():
                 session['logged'] = True
                 return redirect(url_for('home'))
             else:
+                # If the passwords don't matach inform the user
                 flash('Incorrect password please try again!', 'danger')
                 return redirect(url_for('login'))
         else:
+            # If the username doesn't exist inform the user
             flash(f'Username \'{form.username.data}\' does not exist', 'danger')
             return redirect(url_for('login'))
             
