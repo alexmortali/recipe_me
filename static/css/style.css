@@ -5,6 +5,11 @@ body {
     background-color: #f2f2f2;
 }
 
+.uppercase {
+    text-transform: uppercase;
+    padding-left: 0px;
+}
+
 /*----------------------------------------- Base - Jumbotron */
 
 .bg-light {
@@ -40,7 +45,7 @@ body {
 /*----------------------------------------- Recipe Card */
 
 .recipe-card {
-    border: 1px black solid;
+    border: 1px solid black;
     margin-bottom: 25px;
     border-radius: 5px;
     height: 300px;
@@ -91,6 +96,70 @@ hr {
     padding-bottom: 20px;
 }
 
+/*----------------------------------------- Recipe Page */
+
+.recipe-heading-container {
+    border-bottom: 1px solid black;
+    margin-bottom: 22px;
+}
+
+#main-title {
+    margin-bottom: 10px;
+}
+
+.recipe-page-title {
+    letter-spacing: 2px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.stats-container {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.stat {
+    font-size: 1.25rem;
+    padding: 15px;
+    margin-bottom: 0px!important;
+}
+
+.recipe-list {
+    list-style-type: none;
+}
+
+.recipe-image {
+    max-width: 350px;
+    max-height: 425px;
+    margin-bottom: 20px;
+}
+
+#recipe-description {
+    padding: 45px 0px;
+    margin: 0px!important;
+}
+
+.border-class {
+    border: 1px solid black;
+    margin: 10px 0px;
+}
+
+.list-icon {
+    color: #ADD8E6;
+}
+
+.border-left {
+    border-left: 1px solid #ADD8E6;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+ul {
+    padding-left: 0px;
+}
+
 /*----------------------------------------- Media Queries */
 
 @media (max-width: 768px) {
@@ -102,7 +171,7 @@ hr {
         margin-right: 0px;
         margin-left: 0px;
     }
-    
+
     #recipe-card-image {
         border-radius: 5px;
         height: 198px;
@@ -140,8 +209,23 @@ hr {
     .bottom-line {
         margin-top: -10px;
     }
-    
+
     .view-recipe-button {
         margin-left: -10px;
+    }
+
+
+    .recipe-image {
+        max-width: 270px;
+        max-height: 350px;
+    }
+}
+
+@media (max-width: 414px) {
+    .border-left {
+        padding-top: 20px;
+        border-left: none!important;
+        border-top: 1px solid black;
+        margin-top: 20px;
     }
 }
