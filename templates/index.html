@@ -37,7 +37,7 @@
                         <p>{{ recipe.serves_num }}</p>
                     </div>
                     <div class="col-4">
-                        <button class="view-recipe-button"><a>View<span class="d-none d-md-block"> Recipe</span></a></button>
+                        <button class="view-recipe-button"><a href="{{ url_for('recipe', id=recipe._id) }}">View<span class="d-none d-md-block"> Recipe</span></a></button>
                     </div>
                 </div>
             </div>
