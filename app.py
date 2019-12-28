@@ -99,8 +99,9 @@ def recipe(id):
     ''' function to display a single recipe that the user has
         selected to view '''
         
+    ad_equipment = ['pan']
     selected_recipe = mongo.db.recipes.find_one({'_id': ObjectId(id)})
-    return render_template('view_recipe.html', recipe=selected_recipe, title='Recipe')
+    return render_template('view_recipe.html', recipe=selected_recipe, title='Recipe', ad_equipment=ad_equipment)
 
 @app.route('/logout')
 def logout():
