@@ -1,7 +1,63 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container">
-    <p> {{ recipe.recipe_name }}</p>
-    <p> {{ recipe.equipment }}</p>
-    <p> {{ recipe.serves_num }}</p>
+    <div class="row">
+        <div class="col-10">
+            <h1>{{ recipe.recipe_name }}</h1>
+            <h5>Chef: {{ recipe.chef }}</h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <img src="{{ recipe.picture }}">
+        </div>
+    </div>
+
+    <div class="row">
+            <div class="col-4">Prep Time: {{ recipe.prep_time }}</div>
+            <div class="col-4">Cook Time: {{ recipe.cook_time }}</div>
+            <div class="col-4">Serves: {{ recipe.serves_num }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <p>" {{ recipe.description }} "</p>
+        </div>
+    </div>
+
+    <div class="row">
+            <div class="col-6">
+                <ul>
+                    {% for food in recipe.ingredients %}
+                    <li>{{ food }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-6">
+                {% for item in recipe.equipment %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+            </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            {% for tool in ad_equipment %}
+                {% if tool in recipe.equipment %}
+                    <p>Print this Ad</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <ol>
+                {% for method in recipe.method %}
+                    <li>{{ method }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
 </div>
 {% endblock %}
