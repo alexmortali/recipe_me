@@ -93,6 +93,14 @@ def login():
             return redirect(url_for('login'))
             
     return render_template('login.html', title="Login", form=form)
+    
+@app.route('/recipe/<id>', methods=['GET', 'POST'])
+def recipe(id):
+    ''' function to display a single recipe that the user has
+        selected to view '''
+        
+    selected_recipe = mongo.db.recipes.find_one({'_id': ObjectId(id)})
+    return render_template('view_recipe.html', recipe=selected_recipe, title='Recipe')
 
 @app.route('/logout')
 def logout():
