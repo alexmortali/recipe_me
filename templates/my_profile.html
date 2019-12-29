@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <section>
     <h1>{{ user }}'s recipes:</h1>
+    <button>Add Recipe</button>
     {% for recipe in recipes %}
     <div class="container">
         <div class="row recipe-card">
@@ -44,5 +45,6 @@
         </div>
     </div>
     {% endfor %}
+    <button>Delete Profile</button>
 </section>
 {% endblock %}
