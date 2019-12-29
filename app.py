@@ -102,6 +102,21 @@ def recipe(id):
     ad_equipment = ['pan']
     selected_recipe = mongo.db.recipes.find_one({'_id': ObjectId(id)})
     return render_template('view_recipe.html', recipe=selected_recipe, title='Recipe', ad_equipment=ad_equipment)
+    
+@app.route('/userprofile')
+def user_profile():
+    ''' function that allows users to view there profile. 
+        From here they can add/delete recipes and delete there profile '''
+        
+    # Make sure users are logged in to access there profile
+    if 'logged' in session:
+        user = session['username']
+        users_recipes = mongo.db.recipes.find({'username': user})
+        return render_template('my_profile.html', recipes=users_recipes, title="My Profile", user=user)
+    # If the user isn't logged but somehow managed to click 'my profie'
+    else:
+        flash('Only logged in users can see there profile, please log in', 'danger')
+        return redirect(url_for('login'))
 
 @app.route('/logout')
 def logout():
