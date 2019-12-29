@@ -118,6 +118,10 @@ def user_profile():
         flash('Only logged in users can see there profile, please log in', 'danger')
         return redirect(url_for('login'))
 
+@app.route('/add_recipe')
+def add_recipe():
+    ''' '''
+
 @app.route('/logout')
 def logout():
     '''function that allows a user to logout'''
