@@ -5,9 +5,8 @@ body {
     background-color: #f2f2f2;
 }
 
-.uppercase {
-    text-transform: uppercase;
-    padding-left: 0px;
+.stand-out {
+    background-color: #f7f7f7;
 }
 
 /*----------------------------------------- Base - Jumbotron */
@@ -120,8 +119,10 @@ hr {
 
 .stat {
     font-size: 1.25rem;
+    margin-bottom: 0px;
     padding: 15px;
-    margin-bottom: 0px!important;
+    font-weight: 400;
+    letter-spacing: 1px;
 }
 
 .recipe-list {
@@ -132,6 +133,8 @@ hr {
     max-width: 350px;
     max-height: 425px;
     margin-bottom: 20px;
+    border-radius: 20px;
+    border: 1px solid black;
 }
 
 #recipe-description {
@@ -141,6 +144,7 @@ hr {
 
 .border-class {
     border: 1px solid black;
+    border-radius: 5px;
     margin: 10px 0px;
 }
 
@@ -152,12 +156,24 @@ hr {
     border-left: 1px solid #ADD8E6;
 }
 
+.method-list-item {
+    font-size: 110%;
+    margin-bottom: 5px;
+    letter-spacing: 0.3px;
+}
+
 .uppercase {
     text-transform: uppercase;
 }
 
 ul {
     padding-left: 0px;
+}
+
+.no-ad {
+    border-bottom: 1px solid black;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 /*----------------------------------------- Media Queries */
