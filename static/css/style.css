@@ -39,8 +39,6 @@ body {
     line-height: 30px;
 }
 
-
-
 /*----------------------------------------- Recipe Card */
 
 .recipe-card {
@@ -170,6 +168,54 @@ ul {
     padding-left: 0px;
 }
 
+.ad-container {
+    background-color: white;
+}
+
+.ad-image {
+    max-width: 330px;
+    max-height: 250px;
+    float: left;
+    border-radius: 5px;
+}
+
+.ad-title {
+    margin-top: 10px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.ad-paragraph {
+    padding: 30px;
+    margin-bottom: 0px;
+}
+
+.ad-button {
+    font-size: 120%;
+    letter-spacing: 1px;
+    background-color: #FF0000;
+    color: white;
+    border-radius: 15px;
+    border: 1px solid black;
+    text-decoration: none;
+    padding: 5px;
+    margin-top: 3px;
+}
+
+.ad-link {
+    color: white;
+    padding: 13px;
+}
+
+.ad-button:hover {
+    background-color: white;
+}
+
+.ad-link:hover {
+    text-decoration: none;
+    color: red;
+}
+
 .no-ad {
     border-bottom: 1px solid black;
     margin-top: 10px;
@@ -235,6 +281,30 @@ ul {
         max-width: 270px;
         max-height: 350px;
     }
+
+    .ad-image-container {
+        padding-left: 1px;
+    }
+
+    .ad-image {
+        max-width: 225px;
+    }
+
+    .ad-paragraph {
+        font-size: 80%;
+        text-align: justify;
+        padding: 10px;
+    }
+
+    .ad-title {
+        font-size: 1.25rem;
+        margin-top: 6px;
+        margin-bottom: 1px;
+    }
+
+    .ad-button {
+        font-size: 90%;
+    }
 }
 
 @media (max-width: 414px) {
@@ -243,5 +313,17 @@ ul {
         border-left: none!important;
         border-top: 1px solid black;
         margin-top: 20px;
+    }
+
+    .ad-image-container {
+        padding: 1px;
+    }
+
+    .ad-image {
+        max-width: 100%;
+    }
+
+    .ad-button {
+        margin-bottom: 20px;
     }
 }
