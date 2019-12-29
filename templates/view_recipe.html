@@ -14,9 +14,9 @@
     </div>
 
     <div class="row text-center stats-container">
-        <div class="col-4 stat"><h3>Prep: {{ recipe.prep_time }} mins</h3></div>
-        <div class="col-4 stat"><h3>Cook: {{ recipe.cook_time }} mins</h3></div>
-        <div class="col-4 stat"><h3>Serves: {{ recipe.serves_num }}</h3></div>
+        <div class="col-4"><h3 class="stat">Prep: {{ recipe.prep_time }} mins</h3></div>
+        <div class="col-4"><h3 class="stat">Cook: {{ recipe.cook_time }} mins</h3></div>
+        <div class="col-4"><h3 class="stat">Serves: {{ recipe.serves_num }}</h3></div>
     </div>
 
     <div class="row">
@@ -45,10 +45,14 @@
     </div>
     
     <div class="row">
-        <div class="col-12 text-center border-class ad-container">
+        <div class="col-12 text-center">
             {% for tool in ad_equipment %}
                 {% if tool in recipe.equipment %}
-                    <p>Print this Ad</p>
+                    <div class="border-class ad-container">
+                        <p>Print this Ad</p>
+                    </div>
+                {% else %}
+                    <div class="no-ad"></div>
                 {% endif %}
             {% endfor %}
         </div>
@@ -59,7 +63,7 @@
             <h2 class="text-center recipe-page-title">Method:</h2>
             <ol class="recipe-list">
                 {% for method in recipe.method %}
-                    <li><input type="checkbox" class="form-check-input" id="exampleCheck1">{{ method }}</li>
+                    <li class="method-list-item"><input type="checkbox" class="form-check-input" id="exampleCheck1">{{ method }}</li>
                 {% endfor %}
             </ol>
         </div>
