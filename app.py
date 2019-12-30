@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from forms import SignupForm, LoginForm
+from forms import SignupForm, LoginForm, RecipeForm
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -13,6 +13,9 @@ app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 
 mongo = PyMongo(app)
+
+def create_list(x):
+    return x.split(',')
 
 @app.route('/')
 @app.route('/home', methods=['GET', 'POST'])
@@ -118,9 +121,36 @@ def user_profile():
         flash('Only logged in users can see there profile, please log in', 'danger')
         return redirect(url_for('login'))
 
-@app.route('/add_recipe')
+@app.route('/addrecipe', methods=['GET', 'POST'])
 def add_recipe():
-    ''' '''
+    ''' function that allows user to create a new recipe 
+        and store it in the database '''
+    
+    form = RecipeForm()
+    
+    if form.validate_on_submit():
+        ingredients_list = create_list(request.form['ingredients'])
+        equipment_list = create_list(request.form['equipment'])
+        method_list = create_list(request.form['method'])
+        
+        recipes = mongo.db.recipes
+        recipes.insert_one({
+            'recipe_name': request.form['recipe_name'],
+            'summary': request.form['summary'],
+            'description': request.form['description'],
+            'picture': request.form['picture'],
+            'ingredients': ingredients_list,
+            'equipment': equipment_list,
+            'prep_time': request.form['prep_time'],
+            'cook_time': request.form['cook_time'],
+            'method': method_list,
+            'course': request.form['course'],
+            'username': session['username'],
+            })
+        flash('Recipe added ', 'success')
+        return redirect(url_for('user_profile'))
+        
+    return render_template('add_recipe.html', form=form, title='Add Recipe')
 
 @app.route('/logout')
 def logout():

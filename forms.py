@@ -1,6 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, TextAreaField, \
-    IntegerField, SelectField
+from wtforms import StringField, PasswordField, SubmitField, TextAreaField, IntegerField, SelectField
 from wtforms.validators import DataRequired, Length, EqualTo
 
 class SignupForm(FlaskForm):
@@ -22,15 +21,15 @@ class RecipeForm(FlaskForm):
                               Length(min=2, max=20)])
     summary = StringField('Recipe Summary', validators=[DataRequired(), 
                               Length(min=2, max=50)])
+    description = TextAreaField('Recipe Description', validators=[DataRequired(),
+                                Length(min=2, max=600)])
     picture = StringField('Recipe Photo URL', validators=[DataRequired()])
     ingredients = TextAreaField('Ingredients e.g Peas, Carrots', validators=[DataRequired(),
                                 Length(min=2)])
     equipment = TextAreaField('Equipment e.g Saucepan, Fork', validators=[DataRequired(),
                                 Length(min=2)])
-    prep_time = IntegerField('Prep Time in mins e.g 5', validators=[DataRequired(), 
-                              Length(min=1, max=3)])
-    cook_time = IntegerField('Cook Time in mins e.g 5', validators=[DataRequired(), 
-                              Length(min=1, max=3)])
+    prep_time = IntegerField('Prep Time in mins e.g 5', validators=[DataRequired()])
+    cook_time = IntegerField('Cook Time in mins e.g 5', validators=[DataRequired()])
     method = TextAreaField('Method (Seperate points with commas)', validators=[DataRequired(),
                               Length(min=2)])
     course = SelectField(u'Course', choices=[
