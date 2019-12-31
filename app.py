@@ -154,6 +154,16 @@ def add_recipe():
     else:
         flash('An error occured', 'danger')
         return render_template('index.html')
+        
+@app.route('/deleteprofile', methods=['GET', 'POST'])
+def delete_profile():
+    user = session['username']
+
+    mongo.db.recipes.delete_many({'username': user})
+    mongo.db.users.delete_one({'username': user})
+    session.clear()
+    flash('Your profile has been deleted', 'success')
+    return redirect(url_for('index'))
 
 @app.route('/logout')
 def logout():
