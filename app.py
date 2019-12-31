@@ -141,6 +141,8 @@ def add_recipe():
                 'equipment': equipment_list,
                 'prep_time': request.form['prep_time'],
                 'cook_time': request.form['cook_time'],
+                'total_time': request.form['total_time'],
+                'serves_num': request.form['serves_num'],
                 'method': method_list,
                 'course': request.form['course'],
                 'username': session['username'],
