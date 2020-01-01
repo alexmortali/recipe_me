@@ -99,10 +99,15 @@ def login():
 def recipe(id):
     ''' function to display a single recipe that the user has
         selected to view '''
+    
+    if 'logged' in session:
+        user_log = True
+    else:
+        user_log = False
         
     ad_equipment = ['pan']
     selected_recipe = mongo.db.recipes.find_one({'_id': ObjectId(id)})
-    return render_template('view_recipe.html', recipe=selected_recipe, title='Recipe', ad_equipment=ad_equipment)
+    return render_template('view_recipe.html', recipe=selected_recipe, title='Recipe', ad_equipment=ad_equipment, show_button=user_log)
     
 @app.route('/userprofile')
 def user_profile():
@@ -155,6 +160,14 @@ def add_recipe():
         flash('An error occured', 'danger')
         return render_template('index.html')
         
+@app.route('/editrecipe/<id>', methods=["GET", "POST"])
+def edit_recipe(id):
+    ''' function that allows users to edit a recipe they
+        have already posted to the database '''
+    
+    return render_template('index.html')
+    
+    
 @app.route('/deleteprofile', methods=['GET', 'POST'])
 def delete_profile():
     user = session['username']
