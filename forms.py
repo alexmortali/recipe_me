@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, TextAreaField, IntegerField, SelectField
+from wtforms import StringField, PasswordField, SubmitField, TextAreaField, IntegerField, SelectField, FileField
 from wtforms.validators import DataRequired, Length, EqualTo
 
 class SignupForm(FlaskForm):
@@ -23,7 +23,10 @@ class RecipeForm(FlaskForm):
                               Length(max=50)])
     description = TextAreaField('Recipe Description', validators=[DataRequired(),
                                 Length(max=600)])
-    picture = StringField('Recipe Photo URL', validators=[DataRequired()])
+                                
+    #picture = StringField('Recipe Photo URL', validators=[DataRequired()])
+    photo = FileField()
+    
     ingredients = TextAreaField('Ingredients e.g Peas, Carrots', validators=[DataRequired()])
     equipment = TextAreaField('Equipment e.g Saucepan, Fork', validators=[DataRequired()])
     prep_time = IntegerField('Prep Time in mins e.g 5', validators=[DataRequired()])
@@ -32,9 +35,12 @@ class RecipeForm(FlaskForm):
     serves_num = IntegerField('Number of people serves e.g 2', validators=[DataRequired()])
     method = TextAreaField('Method (Seperate points with commas)', validators=[DataRequired(),
                               Length(min=2)])
+    
+    #method = FieldList(StringField('method', validators=[DataRequired(), Length(min=2)]))
     course = SelectField(u'Course', choices=[
         ('breakfast', 'Breakfast'),
         ('lunch', 'Lunch'),
         ('dinner', 'Dinner'),
         ])
     submit_add = SubmitField('Add Recipe')
+    submit_edit = SubmitField('Edit Recipe')

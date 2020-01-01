@@ -4,7 +4,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from forms import SignupForm, LoginForm, RecipeForm
 from werkzeug.security import generate_password_hash, check_password_hash
-
+import base64
 
 app = Flask(__name__)
 
@@ -102,7 +102,17 @@ def recipe(id):
     
     ad_equipment = ['pan']
     selected_recipe = mongo.db.recipes.find_one({'_id': ObjectId(id)})
-    return render_template('view_recipe.html', recipe=selected_recipe, title='Recipe', ad_equipment=ad_equipment)
+    
+    #def decode_image(x):
+    #    fh = open(x, "wb")
+    #    base64.b64encode(fh.read()).decode()
+    #    return x
+        
+    #show_photo = decode_image(selected_recipe['photo'])
+    show_photo = base64.b64decode(selected_recipe['photo']).decode()
+    # UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+        
+    return render_template('view_recipe.html', recipe=selected_recipe, show_photo=show_photo, title='Recipe', ad_equipment=ad_equipment)
     
 @app.route('/userprofile')
 def user_profile():
@@ -118,7 +128,7 @@ def user_profile():
     else:
         flash('Only logged in users can see there profile, please log in', 'danger')
         return redirect(url_for('login'))
-
+        
 @app.route('/addrecipe', methods=["GET", "POST"])
 def add_recipe():
     ''' function that allows user to create a new recipe 
@@ -130,13 +140,15 @@ def add_recipe():
             ingredients_list = create_list(request.form['ingredients'])
             equipment_list = create_list(request.form['equipment'])
             method_list = create_list(request.form['method'])
-        
+            
+            encoded_string = base64.b64encode(form.photo.data.read())
+            
             recipes = mongo.db.recipes
             recipes.insert_one({
                 'recipe_name': request.form['recipe_name'],
                 'summary': request.form['summary'],
                 'description': request.form['description'],
-                'picture': request.form['picture'],
+                'photo': encoded_string,
                 'ingredients': ingredients_list,
                 'equipment': equipment_list,
                 'prep_time': request.form['prep_time'],
@@ -160,7 +172,13 @@ def edit_recipe(id):
     ''' function that allows users to edit a recipe they
         have already posted to the database '''
     
-    return render_template('edit_recipe.html', title="Edit Recipe")
+    chosen_recipe = mongo.db.recipes.find_one({'_id': ObjectId(id)})
+    
+    form = RecipeForm(data=chosen_recipe)
+    
+    new_method = ', '.join(chosen_recipe['method'])
+    
+    return render_template('edit_recipe.html', form=form, new_method=new_method, title="Edit Recipe")
     
     
 @app.route('/deleteprofile', methods=['GET', 'POST'])
