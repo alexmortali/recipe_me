@@ -42,5 +42,14 @@ class RecipeForm(FlaskForm):
         ('lunch', 'Lunch'),
         ('dinner', 'Dinner'),
         ])
+        
+    cuisine = SelectField(u'Cuisine', choices=[
+        ('european', 'European'),
+        ('asian', 'Asian'),
+        ('indian', 'Indian'),
+        ('american', 'American'),
+        ('south american', 'South American'),
+        ('other', 'Other'),
+        ])
     submit_add = SubmitField('Add Recipe')
     submit_edit = SubmitField('Edit Recipe')
