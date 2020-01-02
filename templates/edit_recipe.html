@@ -64,6 +64,20 @@
                     </div>
                     
                     <div class="form-group">
+                        {{ form.cuisine.label(class="form-control-label") }} 
+                        {% if form.cuisine.errors %}
+                        {{ form.cuisine(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.cuisine.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %} 
+                            {{ form.cuisine(class="form-control form-control-lg") }} 
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
                         {{ form.picture.label(class="form-control-label") }} 
                         {% if form.picture.errors %}
                         {{ form.picture(class="form-control form-control-lg is-invalid") }}
