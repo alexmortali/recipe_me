@@ -1,50 +1,58 @@
 {% extends 'base.html' %} {% block content %}
 <section>
-    <h1>{{ user }}'s recipes:</h1>
-    <button><a href="{{ url_for('add_recipe') }}">Add Recipe</a></button>
-    {% for recipe in recipes %}
     <div class="container">
-        <div class="row recipe-card">
-            <div class="col-3" id="recipe-card-image-area">
-                <img src="{{ recipe.picture }}" id="recipe-card-image">
+        <div class="row">
+            <div class="col-12 title-and-button">
+                <h1>{{ user }}'s recipes:</h1>
             </div>
-            <div class="col-9" id="recipe-card-text-area">
-                <!-- Top Row -->
-                <div class="row recipe-card-row" id="recipe-card-top-row">
-                    <div class="col-4" id="recipe-title">
-                        <p>{{ recipe.recipe_name }}</p>
-                    </div>
-                    <div class="col-4 d-none d-md-block">
-                        <p>{{ recipe.course }}</p>
-                    </div>
-                    <div class="col-4 d-none d-md-block">
-                        <p>{{ recipe.cuisine }}</p>
-                    </div>
-                </div>
-                <hr class="recipe-card-line top-line">
-                <!-- Middle Row -->
-                <div class="row recipe-card-row">
-                    <div class="col-12">
-                        <p><i>" {{ recipe.summary }} "</i></p>
-                    </div>
-                </div>
-                <hr class="recipe-card-line bottom-line">
-                <!-- Bottom Row -->
-                <div class="row">
-                    <div class="col-4">
-                        <p>{{ recipe.total_time }}</p>
-                    </div>
-                    <div class="col-4">
-                        <p>{{ recipe.serves_num }}</p>
-                    </div>
-                    <div class="col-4">
-                        <button class="view-recipe-button"><a href="{{ url_for('recipe', id=recipe._id) }}">View<span class="d-none d-md-block"> Recipe</span></a></button>
-                    </div>
-                </div>
+            <div class="col-12 title-and-button top_button">
+                <button class="btn btn-success"><a href="{{ url_for('add_recipe') }}" class="button_link">Add Recipe</button>
             </div>
         </div>
     </div>
-    {% endfor %}
+    <div class="container">
+        {% for recipe in recipes %}
+            <div class="row recipe-card">
+                <div class="col-3" id="recipe-card-image-area">
+                    <img src="{{ recipe.picture }}" id="recipe-card-image">
+                </div>
+                <div class="col-9" id="recipe-card-text-area">
+                    <!-- Top Row -->
+                    <div class="row recipe-card-row" id="recipe-card-top-row">
+                        <div class="col-4" id="recipe-title">
+                            <p>{{ recipe.recipe_name }}</p>
+                        </div>
+                        <div class="col-4 d-none d-md-block">
+                            <p>{{ recipe.course }}</p>
+                        </div>
+                        <div class="col-4 d-none d-md-block">
+                            <p>{{ recipe.cuisine }}</p>
+                        </div>
+                    </div>
+                    <hr class="recipe-card-line top-line">
+                    <!-- Middle Row -->
+                    <div class="row recipe-card-row">
+                        <div class="col-12">
+                            <p><i>" {{ recipe.summary }} "</i></p>
+                        </div>
+                    </div>
+                    <hr class="recipe-card-line bottom-line">
+                    <!-- Bottom Row -->
+                    <div class="row">
+                        <div class="col-4">
+                            <p>{{ recipe.total_time }}</p>
+                        </div>
+                        <div class="col-4">
+                            <p>{{ recipe.serves_num }}</p>
+                        </div>
+                        <div class="col-4">
+                            <button class="view-recipe-button"><a href="{{ url_for('recipe', id=recipe._id) }}">View<span class="d-none d-md-block"> Recipe</span></a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 </section>
 
 <div class="row">

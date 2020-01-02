@@ -93,6 +93,24 @@ hr {
     padding-bottom: 20px;
 }
 
+.button_link {
+    text-decoration: none;
+    color: white;
+}
+
+.button_link:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.title-and-button {
+    padding-left: 0px;
+}
+
+.top_button {
+    margin-bottom: 20px;
+}
+
 /*----------------------------------------- Recipe Page */
 
 .recipe-heading-container {

@@ -80,7 +80,7 @@
     </div>
     
     {% if session['logged'] and recipe.username == session['username'] %}
-            <button class="btn btn-info"><a href="{{ url_for('edit_recipe', id=recipe._id) }}">Edit Recipe</button>
+            <button class="btn btn-success"><a href="{{ url_for('edit_recipe', id=recipe._id) }}" class="button_link">Edit Recipe</button>
     {% endif %}
 </div>
 {% endblock %}
