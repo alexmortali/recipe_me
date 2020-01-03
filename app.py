@@ -118,7 +118,7 @@ def recipe(id):
 def user_profile():
     ''' function that allows users to view there profile. 
         From here they can add/delete recipes and delete there profile '''
-        
+     
     # Make sure users are logged in to access there profile
     if 'logged' in session:
         user = session['username']
@@ -180,6 +180,16 @@ def edit_recipe(id):
     new_method = ', '.join(chosen_recipe['method'])
     
     return render_template('edit_recipe.html', form=form, new_method=new_method, title="Edit Recipe")
+    
+@app.route('/deleterecipe/<id>', methods=["GET", "POST"])
+def delete_recipe(id):
+    ''' Function that allows users to delete a recipe 
+        that they have uploaded '''
+    user = session['username']
+    users_recipes = mongo.db.recipes.find({'username': user})
+    
+    mongo.db.recipes.delete_one({'_id': ObjectId(id)})
+    return render_template('my_profile.html', recipes=users_recipes, title="My Profile", user=user)
     
     
 @app.route('/deleteprofile', methods=['GET', 'POST'])
