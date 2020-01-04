@@ -8,12 +8,22 @@ body {
 .stand-out {
     background-color: #f7f7f7;
     min-height: 100vh;
+    padding-bottom: 60px;
 }
 
 .page-heading {
     font-weight: 400;
     letter-spacing: 3px;
 }
+
+/*----------------------------------------- Footer */
+#footer-text {
+    margin-bottom: 0px;
+    color: #f2f2f2;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
 
 /*----------------------------------------- Form Container */
 
@@ -72,6 +82,19 @@ body {
 .jumbo-text p {
     letter-spacing: 2.5px;
     line-height: 30px;
+}
+
+/*----------------------------------------- About */
+
+#about-pic {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+#about-p {
+    line-height: 30px;
+    letter-spacing: 1px;
 }
 
 /*----------------------------------------- Recipe Card */
