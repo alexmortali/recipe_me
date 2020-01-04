@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 title-and-button">
-                <h1>{{ user }}'s recipes:</h1>
+                <h1 class="page-heading uppercase">{{ user }}'s recipes:</h1>
             </div>
             <div class="col-12 title-and-button top_button">
                 <button class="btn btn-success"><a href="{{ url_for('add_recipe') }}" class="button_link">Add Recipe</a></button>
@@ -14,7 +14,7 @@
         {% for recipe in recipes %}
             <div class="row recipe-card">
                 <div class="col-3" id="recipe-card-image-area">
-                    <img src="{{ recipe.picture }}" id="recipe-card-image">
+                    <img src="{{ recipe.photo }}" id="recipe-card-image">
                 </div>
                 <div class="col-9" id="recipe-card-text-area">
                     <!-- Top Row -->
