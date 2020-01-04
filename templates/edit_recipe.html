@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="container form-container">
-    <h1 class="form-heading">Edit Recipe</h1>
+    <h1 class="page-heading uppercase">Edit Recipe</h1>
     <div class="row">
         <div class="col-12">
-            <form method="POST" action="{{ url_for('edit_recipe') }}">
+            <form method="POST" action="">
                 {{ form.hidden_tag() }}
                 <fieldset class="form-group">
                     <div class="form-group">
@@ -74,20 +74,6 @@
                         </div>
                         {% else %} 
                             {{ form.cuisine(class="form-control form-control-lg") }} 
-                        {% endif %}
-                    </div>
-                    
-                    <div class="form-group">
-                        {{ form.picture.label(class="form-control-label") }} 
-                        {% if form.picture.errors %}
-                        {{ form.picture(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.picture.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                        {% else %} 
-                            {{ form.picture(class="form-control form-control-lg") }} 
                         {% endif %}
                     </div>
                     
