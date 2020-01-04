@@ -23,33 +23,27 @@ class RecipeForm(FlaskForm):
                               Length(max=50)])
     description = TextAreaField('Recipe Description', validators=[DataRequired(),
                                 Length(max=600)])
-                                
-    #picture = StringField('Recipe Photo URL', validators=[DataRequired()])
     photo = FileField()
-    
-    ingredients = TextAreaField('Ingredients e.g Peas, Carrots', validators=[DataRequired()])
-    equipment = TextAreaField('Equipment e.g Saucepan, Fork', validators=[DataRequired()])
+    ingredients = TextAreaField('Ingredients - Separate with full stops e.g Peas. Carrots', validators=[DataRequired()])
+    equipment = TextAreaField('Equipment - Separate with full stops e.g Saucepan. Fork', validators=[DataRequired()])
     prep_time = IntegerField('Prep Time in mins e.g 5', validators=[DataRequired()])
     cook_time = IntegerField('Cook Time in mins e.g 10', validators=[DataRequired()])
     total_time = IntegerField('Total Time in mins e.g 15', validators=[DataRequired()])
     serves_num = IntegerField('Number of people serves e.g 2', validators=[DataRequired()])
-    method = TextAreaField('Method (Seperate points with commas)', validators=[DataRequired(),
+    method = TextAreaField('Method (Seperate points with full stops)', validators=[DataRequired(),
                               Length(min=2)])
-    
-    #method = FieldList(StringField('method', validators=[DataRequired(), Length(min=2)]))
     course = SelectField(u'Course', choices=[
-        ('breakfast', 'Breakfast'),
-        ('lunch', 'Lunch'),
-        ('dinner', 'Dinner'),
+        ('Breakfast', 'Breakfast'),
+        ('Lunch', 'Lunch'),
+        ('Dinner', 'Dinner'),
         ])
-        
     cuisine = SelectField(u'Cuisine', choices=[
-        ('european', 'European'),
-        ('asian', 'Asian'),
-        ('indian', 'Indian'),
-        ('american', 'American'),
-        ('south american', 'South American'),
-        ('other', 'Other'),
+        ('European', 'European'),
+        ('Asian', 'Asian'),
+        ('Indian', 'Indian'),
+        ('American', 'American'),
+        ('South american', 'South American'),
+        ('Other', 'Other'),
         ])
     submit_add = SubmitField('Add Recipe')
     submit_edit = SubmitField('Edit Recipe')
