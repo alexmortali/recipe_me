@@ -1,5 +1,24 @@
 {% extends 'base.html' %} 
 
 {% block content %}
-<p id="test_code"> ABOUT CODE </p>
+<div class="row">
+    <div class="col-12">
+        <h1 class="page-heading uppercase text-center">Welcome to Recipe Me...</h1>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-xs-12 col-lg-6 mb-4">
+        <img src="../static/images/about_image.jpeg" id="about-pic">
+    </div>
+    <div class="col-xs-12 col-lg-6">
+        <h2 class="page-heading">About</h2>
+        <p id="about-p">Recipe Me is an independently run online forum for recipes. 
+        Here you can gather information on recipes from all around the world 
+        to influence your own cooking.<br><br>
+        You can always view recipes however if you sign up for an account you
+        can add your own recipes, edit recipes and view your own profile.<br><br>
+        Creativity and sharing is encouraged and we look forward to seeing 
+        your recipes posted to the site.</p>
+    </div>
+</div>
 {% endblock %}
