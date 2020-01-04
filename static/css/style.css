@@ -7,6 +7,41 @@ body {
 
 .stand-out {
     background-color: #f7f7f7;
+    min-height: 100vh;
+}
+
+.page-heading {
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
+/*----------------------------------------- Form Container */
+
+.form-container {
+    border: 1px solid black;
+    border-radius: 12px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/*----------------------------------------- Buttons */
+
+.button_link {
+    text-decoration: none;
+    color: white;
+}
+
+.button_link:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.title-and-button {
+    padding-left: 0px;
+}
+
+.top_button {
+    margin-bottom: 20px;
 }
 
 /*----------------------------------------- Base - Jumbotron */
@@ -81,34 +116,6 @@ hr {
     margin-bottom: 2rem;
     margin-right: 40px;
     background-color: #ADD8E6;
-}
-
-
-/*----------------------------------------- Form Container */
-
-.form-container {
-    border: 1px solid black;
-    border-radius: 12px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-.button_link {
-    text-decoration: none;
-    color: white;
-}
-
-.button_link:hover {
-    text-decoration: none;
-    color: white;
-}
-
-.title-and-button {
-    padding-left: 0px;
-}
-
-.top_button {
-    margin-bottom: 20px;
 }
 
 /*----------------------------------------- Recipe Page */
