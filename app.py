@@ -16,7 +16,7 @@ mongo = PyMongo(app)
 
 # for adding a recipe
 def create_list(x):
-    return x.split(',')
+    return x.split('.')
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -103,16 +103,15 @@ def recipe(id):
     ad_equipment = ['pan']
     selected_recipe = mongo.db.recipes.find_one({'_id': ObjectId(id)})
     
-    #def decode_image(x):
-    #    fh = open(x, "wb")
-    #    base64.b64encode(fh.read()).decode()
-    #    return x
+    display_method = create_list(selected_recipe["method"])
+    display_ingredients = create_list(selected_recipe["ingredients"])
+    display_equipment = create_list(selected_recipe["equipment"])
         
-    #show_photo = decode_image(selected_recipe['photo'])
-    #show_photo = base64.b64decode(selected_recipe['photo']).decode()
-    # UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
-        
-    return render_template('view_recipe.html', recipe=selected_recipe, title='Recipe', ad_equipment=ad_equipment)
+    return render_template('view_recipe.html', recipe=selected_recipe, 
+                            title='Recipe', display_method=display_method, 
+                            ad_equipment=ad_equipment, 
+                            display_ingredients=display_ingredients,
+                            display_equipment=display_equipment)
     
 @app.route('/userprofile')
 def user_profile():
@@ -137,10 +136,6 @@ def add_recipe():
     form = RecipeForm()
     if request.method == "POST":
         if form.validate_on_submit():
-            ingredients_list = create_list(request.form['ingredients'])
-            equipment_list = create_list(request.form['equipment'])
-            method_list = create_list(request.form['method'])
-            
             encoded_string = base64.b64encode(form.photo.data.read()).decode("utf-8")
             
             recipes = mongo.db.recipes
@@ -149,13 +144,13 @@ def add_recipe():
                 'summary': request.form['summary'],
                 'description': request.form['description'],
                 'photo': "data:image/png;base64," + encoded_string,
-                'ingredients': ingredients_list,
-                'equipment': equipment_list,
+                'ingredients': request.form['ingredients'],
+                'equipment': request.form['equipment'],
                 'prep_time': request.form['prep_time'],
                 'cook_time': request.form['cook_time'],
                 'total_time': request.form['total_time'],
                 'serves_num': request.form['serves_num'],
-                'method': method_list,
+                'method': request.form['method'],
                 'course': request.form['course'],
                 'cuisine': request.form['cuisine'],
                 'username': session['username'],
@@ -174,12 +169,30 @@ def edit_recipe(id):
         have already posted to the database '''
     
     chosen_recipe = mongo.db.recipes.find_one({'_id': ObjectId(id)})
-    
     form = RecipeForm(data=chosen_recipe)
     
-    new_method = ', '.join(chosen_recipe['method'])
-    
-    return render_template('edit_recipe.html', form=form, new_method=new_method, title="Edit Recipe")
+    if request.method == "GET":
+        return render_template('edit_recipe.html', form=form, title="Edit Recipe")
+        
+    elif request.method == "POST":
+        recipes = mongo.db.recipes
+        
+        recipes.update_one({'_id': ObjectId(id)}, {'$set': {
+            'recipe_name': request.form['recipe_name'],
+            'summary': request.form['summary'],
+            'description': request.form['description'],
+            'ingredients': request.form['ingredients'],
+            'equipment': request.form['equipment'],
+            'prep_time': request.form['prep_time'],
+            'cook_time': request.form['cook_time'],
+            'total_time': request.form['total_time'],
+            'serves_num': request.form['serves_num'],
+            'method': request.form['method'],
+            'course': request.form['course'],
+            'cuisine': request.form['cuisine'],
+            }})
+        flash('Recipe Updated ', 'success')
+        return redirect(url_for('recipe', id=id))
     
 @app.route('/deleterecipe/<id>', methods=["GET", "POST"])
 def delete_recipe(id):
