@@ -23,6 +23,26 @@ def index():
     ''' function to display the landing page with all recipes '''
     
     return render_template('index.html', recipes=mongo.db.recipes.find())
+    
+@app.route('/fiter', methods=['GET', 'POST'])
+def filter():
+    ''' Function that allows user to filter 
+        recipes based on course '''
+        
+    course = request.args['course']
+    
+    # Get relevant recipes
+    get_recipes = mongo.db.recipes.find({'course': {'$regex': course}})
+    
+    count_recipes = mongo.db.recipes.count_documents({'course': {'$regex': course}})
+    
+    # If there are no recipes with the selected course
+    if count_recipes == 0:
+        flash('There are currently no ' + course + ' recipes', 'danger')
+        return redirect(url_for('index'))
+    else:
+        flash('Here are our ' + course + ' recipes:', 'success')
+        return render_template('filter.html', title=course + ' Recipes', recipes=get_recipes, )
 
 @app.route('/about')
 def about():
