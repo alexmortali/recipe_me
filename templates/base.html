@@ -8,6 +8,8 @@
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"/>
     
     {% if title %}
@@ -64,6 +66,24 @@
                         <div class="jumbo-text">
                             <h1>Recipe Me</h1>
                             <p>Find new Recipes...<br>Upload your own Recipes.<br>Eat your heart out!</p>
+                        </div>
+                        <div class="filter-form">
+                            <form class="form-inline" action="{{ (url_for('filter')) }}">
+                                <div class="form-group ">
+                                    <!-- Filter Recipes -->
+                                    <label for="course">Filter By: </label>
+                                    <select class="form-control-sm" id="course" name="course">
+                                        <option>Breakfast</option>
+                                        <option>Lunch</option>
+                                        <option>Dinner</option>
+                                    </select>
+                                </div>
+                                <button class="mr-1 searchbar small mr-1" type="submit">
+                                    <strong>
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    </strong>
+                                </button>
+                            </form>
                         </div>
                     </section>
                 </div>
