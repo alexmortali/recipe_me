@@ -24,7 +24,7 @@ def index():
     
     return render_template('index.html', recipes=mongo.db.recipes.find())
     
-@app.route('/fiter', methods=['GET', 'POST'])
+@app.route('/filter', methods=['GET', 'POST'])
 def filter():
     ''' Function that allows user to filter 
         recipes based on course '''
@@ -42,7 +42,8 @@ def filter():
         return redirect(url_for('index'))
     else:
         flash('Here are our ' + course + ' recipes:', 'success')
-        return render_template('filter.html', title=course + ' Recipes', recipes=get_recipes, )
+        return render_template('filter.html', title=course + ' Recipes', recipes=get_recipes)
+    
 
 @app.route('/about')
 def about():
