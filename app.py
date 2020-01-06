@@ -123,6 +123,7 @@ def recipe(id):
     ad_equipment = ['pan']
     selected_recipe = mongo.db.recipes.find_one({'_id': ObjectId(id)})
     
+    # Using create list function to display these sections easier
     display_method = create_list(selected_recipe["method"])
     display_ingredients = create_list(selected_recipe["ingredients"])
     display_equipment = create_list(selected_recipe["equipment"])
@@ -154,11 +155,15 @@ def add_recipe():
         and store it in the database '''
     
     form = RecipeForm()
+    
+    #If they are trying to add a recipe and the form validates
     if request.method == "POST":
         if form.validate_on_submit():
+            # Using base64 to store photo in database
             encoded_string = base64.b64encode(form.photo.data.read()).decode("utf-8")
             
             recipes = mongo.db.recipes
+            # Add the recipe and tell the user it's added
             recipes.insert_one({
                 'recipe_name': request.form['recipe_name'],
                 'summary': request.form['summary'],
@@ -177,6 +182,9 @@ def add_recipe():
                 })
             flash('Recipe added', 'success')
             return redirect(url_for('user_profile'))
+        else:
+            flash('Please make sure form is filled out correctly', 'danger')
+            return redirect(url_for('add_recipe'))
     elif request.method == "GET":    
         return render_template('add_recipe.html', form=form, title='Add Recipe')
     else:
@@ -195,38 +203,43 @@ def edit_recipe(id):
         return render_template('edit_recipe.html', form=form, title="Edit Recipe")
         
     elif request.method == "POST":
-        recipes = mongo.db.recipes
-        
-        recipes.update_one({'_id': ObjectId(id)}, {'$set': {
-            'recipe_name': request.form['recipe_name'],
-            'summary': request.form['summary'],
-            'description': request.form['description'],
-            'ingredients': request.form['ingredients'],
-            'equipment': request.form['equipment'],
-            'prep_time': request.form['prep_time'],
-            'cook_time': request.form['cook_time'],
-            'total_time': request.form['total_time'],
-            'serves_num': request.form['serves_num'],
-            'method': request.form['method'],
-            'course': request.form['course'],
-            'cuisine': request.form['cuisine'],
-            }})
-        flash('Recipe Updated ', 'success')
-        return redirect(url_for('recipe', id=id))
+        if form.validate_on_submit():
+            recipes = mongo.db.recipes
+            
+            recipes.update_one({'_id': ObjectId(id)}, {'$set': {
+                'recipe_name': request.form['recipe_name'],
+                'summary': request.form['summary'],
+                'description': request.form['description'],
+                'ingredients': request.form['ingredients'],
+                'equipment': request.form['equipment'],
+                'prep_time': request.form['prep_time'],
+                'cook_time': request.form['cook_time'],
+                'total_time': request.form['total_time'],
+                'serves_num': request.form['serves_num'],
+                'method': request.form['method'],
+                'course': request.form['course'],
+                'cuisine': request.form['cuisine'],
+                }})
+            flash('Recipe Updated ', 'success')
+            return redirect(url_for('recipe', id=id))
     
 @app.route('/deleterecipe/<id>', methods=["GET", "POST"])
 def delete_recipe(id):
     ''' Function that allows users to delete a recipe 
         that they have uploaded '''
+
     user = session['username']
+    
     users_recipes = mongo.db.recipes.find({'username': user})
-    
     mongo.db.recipes.delete_one({'_id': ObjectId(id)})
+    
     return render_template('my_profile.html', recipes=users_recipes, title="My Profile", user=user)
-    
-    
+
 @app.route('/deleteprofile', methods=['GET', 'POST'])
 def delete_profile():
+    ''' Functio that allows users to delete their profile 
+        along with all there recipes '''
+
     user = session['username']
 
     mongo.db.recipes.delete_many({'username': user})

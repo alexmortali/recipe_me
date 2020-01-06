@@ -38,12 +38,12 @@ body {
 
 .button_link {
     text-decoration: none;
-    color: white;
+    color: #f7f7f7;
 }
 
 .button_link:hover {
     text-decoration: none;
-    color: white;
+    color: #f7f7f7;
 }
 
 .title-and-button {
@@ -52,6 +52,22 @@ body {
 
 .top_button {
     margin-bottom: 20px;
+}
+
+.filter-button {
+    background: transparent;
+    color: rgba(250, 250, 250, 1);
+    border-radius: 30%;
+    border-color: rgba(250, 250, 250, 0.8);
+    margin-bottom: auto;
+}
+
+.view-recipe-button {
+    background-color: #72bcd4;
+    padding: 5px;
+    border-radius: 5px;
+    border: 0.5px solid black;
+    font-weight: 300;
 }
 
 /*----------------------------------------- Base - Jumbotron */
@@ -84,6 +100,12 @@ body {
     line-height: 30px;
 }
 
+.filter-form {
+    margin-top: -25px;
+    letter-spacing: 1px;
+    color: #f2f2f2;
+}
+
 /*----------------------------------------- About */
 
 #about-pic {
@@ -104,6 +126,8 @@ body {
     margin-bottom: 25px;
     border-radius: 5px;
     height: 300px;
+    letter-spacing: 0.5px;
+    font-size: 110%;
 }
 
 #recipe-card-image-area {
@@ -130,15 +154,21 @@ body {
     font-size: 115%;
 }
 
-.view-recipe-button {
-    white-space: nowrap;
-}
-
 hr {
     margin-top: -2rem;
     margin-bottom: 2rem;
     margin-right: 40px;
     background-color: #ADD8E6;
+}
+
+.card-icon {
+    color: #e6bbad;
+    font-size: 115%;
+}
+
+.bottom-row-div {
+    margin-bottom: auto;
+    margin-top: auto;
 }
 
 /*----------------------------------------- Recipe Page */
@@ -274,7 +304,7 @@ ul {
 
 @media (max-width: 768px) {
     .recipe-card {
-        height: 200px;
+        height: 210px;
     }
 
     .row {
@@ -284,8 +314,8 @@ ul {
 
     #recipe-card-image {
         border-radius: 5px;
-        height: 198px;
-        width: 150px;
+        height: 208px;
+        width: 215px;
     }
 
     #recipe-card-top-row {
@@ -299,7 +329,7 @@ ul {
     }
 
     #recipe-card-text-area {
-        font-size: 100%;
+        font-size: 90%;
     }
 
     i {
@@ -356,6 +386,20 @@ ul {
 }
 
 @media (max-width: 414px) {
+    .recipe-card {
+        height: 200px;
+    }
+    
+    #recipe-card-image {
+        border-radius: 5px;
+        height: 199px;
+        width: 145px;
+    }
+    
+    #recipe-card-text-area {
+        font-size: 75%;
+    }
+    
     .border-left {
         padding-top: 20px;
         border-left: none!important;
@@ -373,5 +417,12 @@ ul {
 
     .ad-button {
         margin-bottom: 20px;
+    }
+    .time-div {
+        padding-right: 0px;
+    }
+    .serves-div {
+        padding-left: 10px;
+        padding-right: 0px;
     }
 }
