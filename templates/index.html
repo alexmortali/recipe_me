@@ -2,59 +2,55 @@
 
 <section>
     {% for recipe in recipes %}
-    <div class="container">
-        <div class="row recipe-card">
-            <div class="col-3" id="recipe-card-image-area">
-                <img src="{{ recipe.photo }}" id="recipe-card-image">
-            </div>
-            <div class="col-9" id="recipe-card-text-area">
-                <!-- Top Row -->
-                <div class="row recipe-card-row" id="recipe-card-top-row">
-                    <div class="col-4" id="recipe-title">
-                        <p>{{ recipe.recipe_name }}</p>
-                    </div>
-                    <div class="col-4 d-none d-md-block">
-                        <p>{{ recipe.course }}</p>
-                    </div>
-                    <div class="col-4 d-none d-md-block">
-                        <p>{{ recipe.cuisine }}</p>
-                    </div>
+        <div class="container">
+            <div class="row recipe-card">
+                <div class="col-3" id="recipe-card-image-area">
+                    <img src="{{ recipe.photo }}" id="recipe-card-image">
                 </div>
-                <hr class="recipe-card-line top-line">
-                <!-- Middle Row -->
-                <div class="row recipe-card-row">
-                    <div class="col-12">
-                        <p><i>" {{ recipe.summary }} "</i></p>
+                <div class="col-9" id="recipe-card-text-area">
+                    <!-- Top Row -->
+                    <div class="row recipe-card-row" id="recipe-card-top-row">
+                        <div class="col-4 mt-1" id="recipe-title">
+                            <p>{{ recipe.recipe_name.capitalize() }}</p>
+                        </div>
+                        <div class="col-4 mt-1 d-none d-md-inline">
+                            <i class="fa fa-cutlery card-icon" aria-hidden="true"></i>
+                            <p class="d-inline ml-1">{{ recipe.course }}</p>
+                        </div>
+                        <div class="col-4 mt-1 d-none d-md-inline">
+                            <i class="fa fa-globe card-icon" aria-hidden="true"></i>
+                            <p class="d-inline ml-1">{{ recipe.cuisine }}</p>
+                        </div>
                     </div>
-                </div>
-                <hr class="recipe-card-line bottom-line">
-                <!-- Bottom Row -->
-                <div class="row">
-                    <div class="col-4">
-                        <p>{{ recipe.total_time }}</p>
+                    <hr class="recipe-card-line top-line">
+                    <!-- Middle Row -->
+                    <div class="row recipe-card-row">
+                        <div class="col-12">
+                            <p><i>" {{ recipe.summary }} "</i></p>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <p>{{ recipe.serves_num }}</p>
-                    </div>
-                    <div class="col-4">
-                        <button class="view-recipe-button"><a href="{{ url_for('recipe', id=recipe._id) }}">View<span class="d-none d-md-block"> Recipe</span></a></button>
+                    <hr class="recipe-card-line bottom-line">
+                    <!-- Bottom Row -->
+                    <div class="row">
+                        <div class="col-4 time-div bottom-row-div">
+                            <i class="fa fa-clock-o d-inline d-lg-none card-icon" aria-hidden="true"></i>
+                            <p class="d-none d-xl-inline"><span class="d-md-none d-lg-inline">Total </span>Time: </p>
+                            <p class="d-inline ml-1">{{ recipe.total_time }}<span class="d-none d-sm-inline"> mins</span></p>
+                            <i class="fa fa-clock-o ml-1 d-none d-lg-inline card-icon" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-4 serves-div bottom-row-div">
+                            <i class="fa fa-users d-inline d-lg-none card-icon" aria-hidden="true"></i>
+                            <p class="d-none d-sm-inline ml-1">Serves: </p>
+                            <p class="d-inline ml-1">{{ recipe.serves_num }}</p>
+                            <i class="fa fa-users ml-1 d-none d-lg-inline card-icon" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-4">
+                            <button class="view-recipe-button"><a href="{{ url_for('recipe', id=recipe._id) }}" class="button_link">View<span class="d-none d-md-inline"> Recipe</span></a></button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     {% endfor %}
 </section>
-
-
-<!--
-    {% for recipe in recipes %}
-        <p>{{ recipe.recipe_name }}</p>
-        <p>{{ recipe.course }}</p>
-        <p>{{ recipe.ingredients }}</p>
-        <p>{{ recipe.method }}</p>
-        <img src="{{ recipe.picture }}">
-        <hr>
-    {% endfor %}
--->
 {% endblock %}
