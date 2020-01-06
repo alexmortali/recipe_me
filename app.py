@@ -202,7 +202,6 @@ def edit_recipe(id):
     
     if request.method == "GET":
         return render_template('edit_recipe.html', form=form, title="Edit Recipe")
-        
     elif request.method == "POST":
         if form.validate_on_submit():
             recipes = mongo.db.recipes
@@ -223,6 +222,9 @@ def edit_recipe(id):
                 }})
             flash('Recipe Updated ', 'success')
             return redirect(url_for('recipe', id=id))
+    else:
+        flash('An error occured', 'danger')
+        return render_template('index.html')
     
 @app.route('/deleterecipe/<id>', methods=["GET", "POST"])
 def delete_recipe(id):
