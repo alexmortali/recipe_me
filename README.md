@@ -116,3 +116,12 @@ In the future I would like to add a saved recipes area to the my profile page. W
  - [MongoDB Atlas](https://docs.atlas.mongodb.com/): This project uses MongoDB Atlas as it's database.  
  - [Google Fonts](https://fonts.google.com/): This project uses google font Roboto across the site.  
  - [Font Awesome](https://fontawesome.bootstrapcheatsheets.com/): This project uses font awesome to add some icons to the site.  
+ - [Base 64](https://docs.python.org/2/library/base64.html): This project uses base64 to save images to the database.
+
+# Testing  
+
+### Tests Conducted 
+- HTML Code was put through [W3 HTML Validator](https://validator.w3.org/) which reported missing alt tags from images, which have been added.  
+- CSS Code was put through [W3 CSS Validator](https://jigsaw.w3.org/css-validator/) which reported no problems.  
+- app.py was put through [PEP8 Validator](http://pep8online.com/) with some problems with whitespace and indentation but all have been amended now.  
+- The site was tested on Chrome and Safari on multiple devices including iPhone 7, iPad, laptop and desktop.
