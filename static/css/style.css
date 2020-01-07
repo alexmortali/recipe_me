@@ -24,9 +24,7 @@ body {
     padding-bottom: 15px;
 }
 
-
 /*----------------------------------------- Form Container */
-
 .form-container {
     border: 1px solid black;
     border-radius: 12px;
@@ -35,7 +33,6 @@ body {
 }
 
 /*----------------------------------------- Buttons */
-
 .button_link {
     text-decoration: none;
     color: #f7f7f7;
@@ -71,7 +68,6 @@ body {
 }
 
 /*----------------------------------------- Base - Jumbotron */
-
 .bg-light {
     background-color: #ADD8E6!important;
 }
@@ -107,7 +103,6 @@ body {
 }
 
 /*----------------------------------------- About */
-
 #about-pic {
     max-width: 100%;
     height: auto;
@@ -120,7 +115,6 @@ body {
 }
 
 /*----------------------------------------- Recipe Card */
-
 .recipe-card {
     border: 1px solid black;
     margin-bottom: 25px;
@@ -172,7 +166,6 @@ hr {
 }
 
 /*----------------------------------------- Recipe Page */
-
 .recipe-heading-container {
     border-bottom: 1px solid black;
     margin-bottom: 22px;
@@ -301,7 +294,6 @@ ul {
 }
 
 /*----------------------------------------- Media Queries */
-
 @media (max-width: 768px) {
     .recipe-card {
         height: 210px;
