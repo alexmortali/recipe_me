@@ -17,11 +17,11 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
     
 class RecipeForm(FlaskForm):
-    recipe_name = StringField('Recipe Name', validators=[DataRequired(), 
+    recipe_name = StringField('Recipe Name - Max 20 Char', validators=[DataRequired(), 
                               Length(min=2, max=20)])
-    summary = StringField('Recipe Summary', validators=[DataRequired(), 
+    summary = StringField('Recipe Summary - Max 50 Char', validators=[DataRequired(), 
                               Length(max=50)])
-    description = TextAreaField('Recipe Description', validators=[DataRequired(),
+    description = TextAreaField('Recipe Description - Max 600 Char', validators=[DataRequired(),
                                 Length(max=600)])
     photo = FileField()
     ingredients = TextAreaField('Ingredients - Separate with full stops e.g Peas. Carrots', validators=[DataRequired()])
@@ -30,8 +30,7 @@ class RecipeForm(FlaskForm):
     cook_time = IntegerField('Cook Time in mins e.g 10', validators=[DataRequired()])
     total_time = IntegerField('Total Time in mins e.g 15', validators=[DataRequired()])
     serves_num = IntegerField('Number of people serves e.g 2', validators=[DataRequired()])
-    method = TextAreaField('Method (Seperate points with full stops)', validators=[DataRequired(),
-                              Length(min=2)])
+    method = TextAreaField('Method (Seperate points with full stops)', validators=[DataRequired()])
     course = SelectField(u'Course', choices=[
         ('Breakfast', 'Breakfast'),
         ('Lunch', 'Lunch'),
