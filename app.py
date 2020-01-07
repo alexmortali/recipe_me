@@ -118,19 +118,22 @@ def login():
 def recipe(id):
     ''' function to display a single recipe that the user has
         selected to view '''
-
+        
     selected_recipe = mongo.db.recipes.find_one({'_id': ObjectId(id)})
     
     # Using create list function to display these sections easier
     display_method = create_list(selected_recipe["method"])
     display_ingredients = create_list(selected_recipe["ingredients"])
     display_equipment = create_list(selected_recipe["equipment"])
+
+    show_ad = make_comparison(ad_equipment, display_equipment)
         
     return render_template('view_recipe.html', recipe=selected_recipe, 
                             title='Recipe', display_method=display_method, 
                             ad_equipment=ad_equipment, 
                             display_ingredients=display_ingredients,
-                            display_equipment=display_equipment)
+                            display_equipment=display_equipment,
+                            show_ad=show_ad)
     
 @app.route('/userprofile')
 def user_profile():

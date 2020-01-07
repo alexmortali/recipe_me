@@ -46,25 +46,23 @@
     
     <div class="row">
         <div class="col-12 text-center">
-            {% for tool in ad_equipment %}
-                {% if tool in recipe.equipment %}
-                    <div class="border-class ad-container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-4 ad-image-container">
-                                <img src="../static/images/ad_pic.jpg" class="ad-image">
-                            </div>
-                            <div class="col-sm-12 col-md-8">
-                                <h3 class="ad-title uppercase">VonShef 11 Piece Copper Pan Set</h3>
-                                <p class="ad-paragraph">Ideal for anyone looking to upgrade their kitchenware, 
-                                this elegant 11pc copper cookware set will unleash the culinary potential of any kitchen</p>
-                                <button class="ad-button"><a href="https://amzn.to/3652Yu4" target="_blank" class="ad-link">Check it out</a></button>
-                            </div>
+            {% if show_ad %}
+                <div class="border-class ad-container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4 ad-image-container">
+                            <img src="../static/images/ad_pic.jpg" class="ad-image">
+                        </div>
+                        <div class="col-sm-12 col-md-8">
+                            <h3 class="ad-title uppercase">VonShef 11 Piece Copper Pan Set</h3>
+                            <p class="ad-paragraph">Ideal for anyone looking to upgrade their kitchenware, 
+                            this elegant 11pc copper cookware set will unleash the culinary potential of any kitchen</p>
+                            <button class="ad-button"><a href="https://amzn.to/3652Yu4" target="_blank" class="ad-link">Check it out</a></button>
                         </div>
                     </div>
-                {% else %}
-                    <div class="no-ad"></div>
-                {% endif %}
-            {% endfor %}
+                </div>
+            {% else %}
+                <div class="no-ad"></div>
+            {% endif %}
         </div>
     </div>
     
