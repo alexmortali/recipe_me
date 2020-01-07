@@ -5,6 +5,7 @@ from bson.objectid import ObjectId
 from forms import SignupForm, LoginForm, RecipeForm
 from werkzeug.security import generate_password_hash, check_password_hash
 import base64
+from functions import *
 
 app = Flask(__name__)
 
@@ -13,10 +14,6 @@ app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 
 mongo = PyMongo(app)
-
-# for adding a recipe
-def create_list(x):
-    return x.split('.')
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
