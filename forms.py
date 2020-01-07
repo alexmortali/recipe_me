@@ -28,7 +28,6 @@ class RecipeForm(FlaskForm):
     equipment = TextAreaField('Equipment - Separate with full stops e.g Saucepan. Fork', validators=[DataRequired()])
     prep_time = IntegerField('Prep Time in mins e.g 5', validators=[DataRequired()])
     cook_time = IntegerField('Cook Time in mins e.g 10', validators=[DataRequired()])
-    total_time = IntegerField('Total Time in mins e.g 15', validators=[DataRequired()])
     serves_num = IntegerField('Number of people serves e.g 2', validators=[DataRequired()])
     method = TextAreaField('Method (Seperate points with full stops)', validators=[DataRequired()])
     course = SelectField(u'Course', choices=[
