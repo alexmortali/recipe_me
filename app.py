@@ -6,6 +6,7 @@ from forms import SignupForm, LoginForm, RecipeForm
 from werkzeug.security import generate_password_hash, check_password_hash
 import base64
 from functions import *
+from constants import *
 
 app = Flask(__name__)
 
@@ -117,8 +118,7 @@ def login():
 def recipe(id):
     ''' function to display a single recipe that the user has
         selected to view '''
-    
-    ad_equipment = ['pan']
+
     selected_recipe = mongo.db.recipes.find_one({'_id': ObjectId(id)})
     
     # Using create list function to display these sections easier
