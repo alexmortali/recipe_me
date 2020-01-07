@@ -44,7 +44,7 @@
                         <div class="col-4 time-div bottom-row-div">
                             <i class="fa fa-clock-o d-inline d-lg-none card-icon" aria-hidden="true"></i>
                             <p class="d-none d-xl-inline"><span class="d-md-none d-lg-inline">Total </span>Time: </p>
-                            <p class="d-inline ml-1">{{ recipe.total_time }}<span class="d-none d-sm-inline"> mins</span></p>
+                            <p class="d-inline ml-1">{{ recipe.prep_time|int + recipe.cook_time|int }}<span class="d-none d-sm-inline"> mins</span></p>
                             <i class="fa fa-clock-o ml-1 d-none d-lg-inline card-icon" aria-hidden="true"></i>
                         </div>
                         <div class="col-4 serves-div bottom-row-div">
