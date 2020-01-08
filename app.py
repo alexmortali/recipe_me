@@ -30,7 +30,7 @@ def filter():
     """ Function that allows user to filter
         recipes based on course """
 
-    course = request.args['course']
+    course = request.args['course-filter']
 
     # Get relevant recipes
     get_recipes = mongo.db.recipes.find({'course': {'$regex': course}})
