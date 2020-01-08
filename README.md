@@ -125,3 +125,28 @@ In the future I would like to add a saved recipes area to the my profile page. W
 - CSS Code was put through [W3 CSS Validator](https://jigsaw.w3.org/css-validator/) which reported no problems.  
 - app.py was put through [PEP8 Validator](http://pep8online.com/) with some problems with whitespace and indentation but all have been amended now.  
 - The site was tested on Chrome and Safari on multiple devices including iPhone 7, iPad, laptop and desktop.
+- Unittesting was used to check the response code of a number routes were 200, they were all successfull.
+
+#### Manual testing
+A great deal of manual testing was used for the site, for example:  
+- All buttons/ were manually testing to see if they were pointing in the right direction.
+- All functionality was manually tested on both desktop and mobile. For example all the possibilities that come with submitting any of the forms. All forms now work correctly.
+- All pages were tested on desktop and mobile for page layout and readability of content. There was some issues with some elements being too big for mobile devices but this has now been amended.
+
+# Deployement
+This project was developed using [AWS Cloud9.](https://aws.amazon.com/cloud9/) [Git](https://git-scm.com/) was used for version control and backup. The projects remote 
+repository on GitHub is [here](https://github.com/alexmortali/fifa-data-dashboard). From there the the site is deployed to [Heroku](https://www.heroku.com/home).
+
+The results of this can be seen [here](https://recipe-me-project-3.herokuapp.com/)
+
+# Credits   
+#### CONTENT
+The data was taken from [here.](https://www.kaggle.com/karangadiya/fifa19) It has been edited slightly to remove blanks, typos and some of the rows. All content throughout the site was written by me.
+
+#### MEDIA
+The image of Messi was taken from [here](https://mundoalbiceleste.com/2018/09/24/lionel-messi-fifa-best-argentina-coach/)
+
+#### ACKNOWLEDGEMENTS
+- [Corey Schafer Youtube](https://www.youtube.com/watch?v=QnDWIZuWYW0&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH&index=) - This was used mainly for knowledge on wtforms.
+- [Unittesting](https://medium.com/@neeti.jain/how-to-do-unit-testing-in-flask-and-find-code-coverage-fa5201399bc4) - This blog post helped with unittesting.
+- [Mongo Docs](https://docs.mongodb.com/manual/reference/operator/query/regex/) - These docs were used to help with using mongodb.
