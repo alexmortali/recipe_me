@@ -7,7 +7,7 @@ ad_equipment = [
     'saucepan',
     'casserole pot',
     'steamer basket',
-    'steamer', 
+    'steamer',
     'skimmer',
     'spatula',
     'ladle',
