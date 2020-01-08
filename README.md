@@ -58,7 +58,7 @@ Red is also used for when a user wants to delete anything such as a recipe or th
 For other buttons such as edit and add a recipe green is used. It works well on the page and stands out enough so it easy for the user to find the button if they are looking for it.
 
 #### Typography
-For the font 'Roboto' is imported from [google fonts](https://fonts.googleapis.com) and used throughout the site. It is a clear and simple font that is easy to read and does not interupt the users 
+For the font 'Roboto' is imported from [google fonts](https://fonts.google.com/) and used throughout the site. It is a clear and simple font that is easy to read and does not interupt the users 
 interaction with the site. A soft black is also used for the font accross the site, keeping it consistent and easy to read.
 
 # Features  
@@ -134,17 +134,15 @@ A great deal of manual testing was used for the site, for example:
 - All pages were tested on desktop and mobile for page layout and readability of content. There was some issues with some elements being too big for mobile devices but this has now been amended.
 
 # Deployement
-This project was developed using [AWS Cloud9.](https://aws.amazon.com/cloud9/) [Git](https://git-scm.com/) was used for version control and backup. The projects remote 
-repository on GitHub is [here](https://github.com/alexmortali/fifa-data-dashboard). From there the the site is deployed to [Heroku](https://www.heroku.com/home).
+This project was developed using [AWS Cloud9.](https://aws.amazon.com/cloud9/) [Git](https://git-scm.com/) was used for version control and backup. 
+From Github the site is deployed to [Heroku](https://www.heroku.com/home).
 
 The results of this can be seen [here](https://recipe-me-project-3.herokuapp.com/)
 
 # Credits   
 #### CONTENT
-The data was taken from [here.](https://www.kaggle.com/karangadiya/fifa19) It has been edited slightly to remove blanks, typos and some of the rows. All content throughout the site was written by me.
-
-#### MEDIA
-The image of Messi was taken from [here](https://mundoalbiceleste.com/2018/09/24/lionel-messi-fifa-best-argentina-coach/)
+- The images used for the site were licensed from [Adobe Stock](https://stock.adobe.com/uk/)
+- The recipes added by 'alex' were made up just for dummy data. The rest will be from users of the site.
 
 #### ACKNOWLEDGEMENTS
 - [Corey Schafer Youtube](https://www.youtube.com/watch?v=QnDWIZuWYW0&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH&index=) - This was used mainly for knowledge on wtforms.
