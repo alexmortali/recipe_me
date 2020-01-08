@@ -17,6 +17,7 @@ body {
 }
 
 /*----------------------------------------- Footer */
+
 #footer-text {
     margin-bottom: 0px;
     color: #f2f2f2;
@@ -25,6 +26,7 @@ body {
 }
 
 /*----------------------------------------- Form Container */
+
 .form-container {
     border: 1px solid black;
     border-radius: 12px;
@@ -33,6 +35,7 @@ body {
 }
 
 /*----------------------------------------- Buttons */
+
 .button_link {
     text-decoration: none;
     color: #f7f7f7;
@@ -68,6 +71,7 @@ body {
 }
 
 /*----------------------------------------- Base - Jumbotron */
+
 .bg-light {
     background-color: #ADD8E6!important;
 }
@@ -76,7 +80,7 @@ body {
     color: #f2f2f2!important;
 }
 
-.jumbotron {
+.jumbotron-section {
     background-image: url('../images/jumbotron-desktop.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -103,6 +107,7 @@ body {
 }
 
 /*----------------------------------------- About */
+
 #about-pic {
     max-width: 100%;
     height: auto;
@@ -115,6 +120,7 @@ body {
 }
 
 /*----------------------------------------- Recipe Card */
+
 .recipe-card {
     border: 1px solid black;
     margin-bottom: 25px;
@@ -166,6 +172,7 @@ hr {
 }
 
 /*----------------------------------------- Recipe Page */
+
 .recipe-heading-container {
     border-bottom: 1px solid black;
     margin-bottom: 22px;
@@ -294,6 +301,7 @@ ul {
 }
 
 /*----------------------------------------- Media Queries */
+
 @media (max-width: 768px) {
     .recipe-card {
         height: 210px;
@@ -378,25 +386,39 @@ ul {
 }
 
 @media (max-width: 414px) {
+    .jumbotron-section {
+        height: 425px!important;
+    }
+
     .recipe-card {
         height: 200px;
     }
-    
+
     #recipe-card-image {
         border-radius: 5px;
         height: 198px;
-        width: 145px;
+        width: 123px;
+        object-fit: cover;
     }
-    
+
     #recipe-card-text-area {
         font-size: 75%;
+        padding-left: 48px;
     }
-    
+
+    .bottom-row-div {
+        font-size: 85%;
+    }
+
     .border-left {
         padding-top: 20px;
         border-left: none!important;
         border-top: 1px solid black;
         margin-top: 20px;
+    }
+
+    .recipe-image {
+        max-width: 230px;
     }
 
     .ad-image-container {
