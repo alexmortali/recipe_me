@@ -1,11 +1,11 @@
 def create_list(x):
-    ''' function to create a list '''
+    """ function to create a list """
     
     return x.split('.')
     
 def make_comparison(ad_equip, display_equip):
-    ''' function that checks if one item of a list is in another,
-        if it is return True '''
+    """ function that checks if one item of a list is in another,
+        if it is return True """
         
     lower_case_ad_equip = [x.lower() for x in ["A","B","C"]]
     lower_case_display_equip = [y.lower() for y in ["A","B","C"]]

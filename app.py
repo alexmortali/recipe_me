@@ -6,7 +6,7 @@ from bson.objectid import ObjectId
 from forms import SignupForm, LoginForm, RecipeForm
 from werkzeug.security import generate_password_hash, check_password_hash
 import base64
-from functions import *
+from helpers import *
 from constants import *
 
 app = Flask(__name__)
@@ -20,15 +20,15 @@ mongo = PyMongo(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    ''' function to display the landing page with all recipes '''
+    """ function to display the landing page with all recipes """
 
     return render_template('index.html', recipes=mongo.db.recipes.find())
 
 
 @app.route('/filter', methods=['GET', 'POST'])
 def filter():
-    ''' Function that allows user to filter
-        recipes based on course '''
+    """ Function that allows user to filter
+        recipes based on course """
 
     course = request.args['course']
 
@@ -50,19 +50,19 @@ def filter():
 
 @app.route('/about')
 def about():
-    ''' function to display the about page '''
+    """ function to display the about page """
 
     return render_template('about.html', title="About")
 
 
 @app.route('/sign_up', methods=["GET", "POST"])
 def sign_up():
-    ''' function to display the sign up page with a form for
+    """ function to display the sign up page with a form for
         users to create an account. Firstly it checks that the form
         has been filled in correctly. Then if there is no existing user, it
         creates an account and notifies the users they are now
         logged in on that account. If the username already exists
-        it gives them a message to try another name.'''
+        it gives them a message to try another name."""
 
     form = SignupForm()
     # Checking form has been filled in correctly
@@ -92,12 +92,12 @@ def sign_up():
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
-    ''' function to display the login page with a form for
+    """ function to display the login page with a form for
         users to enter their details. Firstly it checks that the form
         has been filled in correctly. Then it checks that the username exists.
         If it doesn't it notifies the user. If it does it checks the
         passwords match and if they do logs the user in.
-        If they don't it notifies them of an incorrect password '''
+        If they don't it notifies them of an incorrect password """
 
     form = LoginForm()
     # Checking form has been filled in correctly
@@ -128,8 +128,8 @@ def login():
 
 @app.route('/recipe/<id>', methods=['GET', 'POST'])
 def recipe(id):
-    ''' function to display a single recipe that the user has
-        selected to view '''
+    """ function to display a single recipe that the user has
+        selected to view """
 
     selected_recipe = mongo.db.recipes.find_one({'_id': ObjectId(id)})
 
@@ -150,8 +150,8 @@ def recipe(id):
 
 @app.route('/userprofile')
 def user_profile():
-    ''' function that allows users to view there profile.
-        From here they can add/delete recipes and delete there profile '''
+    """ function that allows users to view there profile.
+        From here they can add/delete recipes and delete there profile """
 
     # Make sure users are logged in to access there profile
     if 'logged' in session:
@@ -168,8 +168,8 @@ def user_profile():
 
 @app.route('/addrecipe', methods=["GET", "POST"])
 def add_recipe():
-    ''' function that allows user to create a new recipe
-        and store it in the database '''
+    """ function that allows user to create a new recipe
+        and store it in the database """
 
     form = RecipeForm()
 
@@ -211,8 +211,8 @@ def add_recipe():
 
 @app.route('/editrecipe/<id>', methods=["GET", "POST"])
 def edit_recipe(id):
-    ''' function that allows users to edit a recipe they
-        have already posted to the database '''
+    """ function that allows users to edit a recipe they
+        have already posted to the database """
 
     chosen_recipe = mongo.db.recipes.find_one({'_id': ObjectId(id)})
     form = RecipeForm(data=chosen_recipe)
@@ -246,8 +246,8 @@ def edit_recipe(id):
 
 @app.route('/deleterecipe/<id>', methods=["GET", "POST"])
 def delete_recipe(id):
-    ''' Function that allows users to delete a recipe
-        that they have uploaded '''
+    """ Function that allows users to delete a recipe
+        that they have uploaded """
 
     user = session['username']
 
@@ -260,8 +260,8 @@ def delete_recipe(id):
 
 @app.route('/deleteprofile', methods=['GET', 'POST'])
 def delete_profile():
-    ''' Functio that allows users to delete their profile
-        along with all there recipes '''
+    """ Functio that allows users to delete their profile
+        along with all there recipes """
 
     user = session['username']
 
@@ -274,7 +274,7 @@ def delete_profile():
 
 @app.route('/logout')
 def logout():
-    '''function that allows a user to logout'''
+    """function that allows a user to logout"""
 
     session.clear()
     return redirect(url_for('index'))
