@@ -38,8 +38,11 @@ def filter():
     count_recipes = mongo.db.recipes.count_documents({'course':
                                                      {'$regex': course}})
 
+    if course == 'All':
+        flash('Here are our all of our recipes:', 'success')
+        return redirect(url_for('index'))
     # If there are no recipes with the selected course
-    if count_recipes == 0:
+    elif count_recipes == 0:
         flash('There are currently no ' + course + ' recipes', 'danger')
         return redirect(url_for('index'))
     else:
@@ -209,7 +212,7 @@ def add_recipe():
         return render_template('index.html')
 
 
-@app.route('/editrecipe/<id>', methods=["GET", "POST"])
+@app.route('/edit_recipe/<id>', methods=["GET", "POST"])
 def edit_recipe(id):
     """ function that allows users to edit a recipe they
         have already posted to the database """
